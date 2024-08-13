@@ -1,0 +1,13 @@
+#!/bin/bash
+
+BROWSERS='TRUE microsoft-edge FALSE google-chrome FALSE firefox'
+
+HEIGHT=400
+
+LINK=$*
+
+BROWSER=$(zenity --list --radiolist --text "${LINK:0:100}" --column='' --column='Browsers' --height=$HEIGHT --title='Select browser to open link' $BROWSERS)
+
+if [ ! -z "$BROWSER" ]; then
+    ${BROWSER,,} "$LINK" &
+fi
